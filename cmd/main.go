@@ -39,7 +39,9 @@ func main() {
 
 	fmt.Println("Running cleanup tasks...")
 	// Your cleanup tasks go here
-	connect.Close(context.Background())
+	if connect.Close(context.Background()) != nil {
+		return
+	}
 	// redisConn.Close()
 	fmt.Println("Fiber was successful shutdown.")
 }
